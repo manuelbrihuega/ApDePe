@@ -1,0 +1,63 @@
+<h1>Pedido <%= @order.id %></h1>
+
+<p id="notice">
+Pedido total <%= @order.total %> €
+</p>
+
+<h2>Información de contacto</h2>
+<table>
+  <tr>
+    <td id = "HeaderTablaMostrar">Id: </td>
+    <td id = "ContentTablaMostrar"><%= @order.id %></td>
+  </tr>
+  <tr>
+    <td id = "HeaderTablaMostrar">Email: </td>
+    <td id = "ContentTablaMostrar"><%= @order.email %></td>
+  </tr>
+  <tr>
+    <td id = "HeaderTablaMostrar">Teléfono: </td>
+    <td id = "ContentTablaMostrar"><%= @order.phone_number %></td>
+  </tr>
+</table>
+
+<h2>Dirección de envío</h2>
+<table>
+  <tr>
+    <td id = "HeaderTablaMostrar">Nombre: </td>
+    <td id = "ContentTablaMostrar"><%= @order.ship_to_first_name %></td>
+  </tr>
+  <tr>
+    <td id = "HeaderTablaMostrar">Apellidos: </td>
+    <td id = "ContentTablaMostrar"><%= @order.ship_to_last_name %></td>
+  </tr>
+  <tr>
+    <td id = "HeaderTablaMostrar">Dirección: </td>
+    <td id = "ContentTablaMostrar"><%= @order.ship_to_address %></td>
+  </tr>
+  <tr>
+    <td id = "HeaderTablaMostrar">Ciudad: </td>
+    <td id = "ContentTablaMostrar"><%= @order.ship_to_city %></td>
+  </tr>
+  <tr>
+    <td id = "HeaderTablaMostrar">Código postal: </td>
+    <td id = "ContentTablaMostrar"><%= @order.ship_to_postal_code %></td>
+  </tr>
+  <tr>
+    <td id = "HeaderTablaMostrar">País: </td>
+    <td id = "ContentTablaMostrar"><%= @order.ship_to_country %></td>
+  </tr>
+</table>
+
+<h2>Detalles del pedido</h2>
+  <% @order.order_items.each do |item| %>
+	<div id = "Nuevo">
+		<%= item.book.title %>
+	</div>
+      <%= link_to item.book.title, :action => "show", :controller => "catalog", :id => item.book.id %>
+  <% end %>
+
+
+<%= button_to "Cerrar pedido", :action => 'close', :id => @order unless @order.closed? %>
+<p />
+<%= link_to 'Volver', "index" %>
+

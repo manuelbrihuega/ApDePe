@@ -1,0 +1,68 @@
+<%= form_for(@book) do |f| %>
+  <% if @book.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@book.errors.count, "error") %> prohibited this book from being saved:</h2>
+
+      <ul>
+      <% @book.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <div id="HeaderLibro"><%= f.label :Título %></div>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <div id="HeaderLibro"><%= f.label :"Editado por" %></div>
+    <%= f.collection_select :publisher_id, Publisher.all, :id, :name, :prompt => true %>
+
+  </div>
+  <div class="field">
+    <div id="HeaderLibro"><%= f.label :"Publicado en" %></div>
+    <%= f.datetime_select :published_at %>
+  </div>
+  <div class="field">
+    <div id="HeaderLibro"><%= f.label :ISBN %></div>
+    <%= f.text_field :isbn %>
+  </div>
+  <div class="field">
+    <div id="HeaderLibro"><%= f.label :Descripción %></div>
+    <%= f.text_area :blurb %>
+  </div>
+  <div class="field">
+    <div id="HeaderLibro"><%= f.label :Páginas %></div>
+    <%= f.number_field :page_count %>
+  </div>
+  <div class="field">
+    <div id="HeaderLibro"><%= f.label :Precio %></div>
+    <%= f.text_field :price %>
+  </div>
+  <div class="field">
+    <div id="HeaderLibro"><%= f.label :"Creado en" %></div>
+    <%= f.datetime_select :created_at %>
+  </div>
+  <div class="field">
+    <div id="HeaderLibro"><%= f.label :"Actualizado en" %></div>
+    <%= f.datetime_select :updated_at %>
+  </div>
+
+  <div class="field">
+    <div id="HeaderLibro"><%= f.label :Autores %></div>
+    <%= f.collection_select :author_ids, Author.all, :id, :name, {}, { :multiple => true, :size => 5 }%>
+  </div>
+  <div class="field">
+    <div id="HeaderLibro"><%= f.label :photo, "Foto" %></div>
+    <%= f.file_field :photo %>
+  </div>
+  <div class="field">
+    <%= f.label 'Etiquetas'%> <br />
+    <%= collection_select :book, :tag_list, Tag.find(:all), :name, :name, {:selected => @book.tags}, { :multiple => true, :size => 5} %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

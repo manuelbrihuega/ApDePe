@@ -1,0 +1,22 @@
+<h1>Lista de etiquetas</h1>
+
+<table>
+  <tr>
+    <td id="HeaderTabla">Nombre</td>
+  </tr>
+
+  <% @tags.each do |tag| %>
+  <tr>
+    <td id="ContentEtiqueta"><%= tag.name %></td>
+    <td><%= link_to 'Mostrar etiqueta', tag %></td>
+    <td><%= link_to 'Editar etiqueta', edit_tag_path(tag) %></td>
+    <td><%= link_to 'Eliminar etiqueta', tag, confirm: '¿Está seguro que quiere eliminar la etiqueta?', method: :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<br />
+
+<div id= "Nuevo">
+  <%= link_to 'Nueva etiqueta', new_tag_path %>
+</div>

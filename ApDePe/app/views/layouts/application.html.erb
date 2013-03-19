@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title><%= @page_title || 'ApDePe' %></title>
+        <%= stylesheet_link_tag "application" %>
+	<%= javascript_include_tag "application" %>
+    </head>
+    <body>
+	<div id="header">
+	  <%= image_tag("logo.png") %>
+          <h1 id="titulo">ApDePe&trade;</h1>
+          <h2 id="slogan">Librería electrónica</h2>
+
+<div id="actions">
+        <% if current_user %>
+	        <p id="login">Iniciada sesión como... <%= current_user.login %></p>
+		<div id="registro">
+			  <%= link_to "Editar Perfil", edit_user_path(current_user.id)%>
+			  <%= link_to "Cerrar sesión", :logout%>
+		</div>
+        <% else %>
+          	<div id="registro">
+			<%= link_to "Registrarse", new_user_path%>
+          		<%= link_to "Iniciar sesión", login_url %>
+		</div>
+        <% end %>
+
+</div>
+        
+        </div>
+
+        <div id="menu">Menu
+		<a href="/home">Home</a>
+		<a href="/catalog">Catalogo</a>
+		
+		<% if current_user %>
+		<% if is_admin? %>
+		<a href="/authors">Autores</a>
+		<a href="/publishers">Editores</a>
+		<a href="/books">Libros</a>
+		<a href="/tags">Etiquetas</a>		
+		<% end %>
+		<a href="/order/index">Pedidos</a>
+		<a href="/forums">Foro</a>
+		<% end %>
+		
+        </div>
+	
+
+        <div id="content">
+          <% if flash[:notice] %>
+            <div id="notice"><%= flash[:notice] %></div>
+          <% end %>
+          <%= yield %>
+
+
+	<% if current_user %>
+		<% if @cart %>
+			<div id="shopping_cart">
+_________________________________________
+			<%= render :partial => "cart/cart" %>
+			</div>
+		<% end %>
+	<% end %>
+
+         </div>
+
+
+        <div id="footer">
+           &copy; 2011 ApDePe
+        </div>
+    </body>
+</html>

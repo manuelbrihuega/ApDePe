@@ -1,0 +1,44 @@
+// Place all the styles related to the Authors controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#HeaderEditor {
+  color: #4682B4;
+  padding-left: 0px;
+  font-size: 16px;
+  font-weight: bold;
+} 
+
+#ContentEditor {
+  color: #000000;
+  padding-right: 10px;
+  font-size: 15px;
+  font-weight: normal;
+} 
+
+#HeaderMostrarEditor {
+  color: #4682B4;
+  padding-left: 0px;
+  padding-bottom: 10px;
+  font-size: 18px;
+  font-weight: bold;
+} 
+
+#ContentMostrarEditor {
+  color: #000000;
+  left-padding: 10px;
+  padding-bottom: 10px;
+  font-size: 16px;
+  font-weight: normal;
+} 
+
+#Nuevo a {
+  color: #b47746;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+#Nuevo a:hover {
+  color: #b47746;
+  text-decoration: underline;
+}

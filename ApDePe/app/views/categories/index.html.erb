@@ -1,0 +1,52 @@
+<h1>Foros</h1>
+<% @categories.each do |category| %>
+    <% if category.forums.size > 0 %>
+	<table>
+	        <tr>
+			<td id = "HeaderTabla" colspan="2" align="left">Foro</th>
+			<td id = "HeaderTabla">Temas</th>
+			<td id = "HeaderTabla">Mensajes</th>
+			<td id = "HeaderTabla" align="left">Último post</th>
+		</tr>
+		<% category.forums.each do |forum| %>
+		<tr>
+			<td class="icon"><%= image_tag 'ruby.png' %></td>
+			<td class="description"><%= link_to forum.title, forum_path(forum) %><br />
+				<span class="smaller"><%= forum.description %></span><br />
+			</td>
+			<td class="counts smaller"><%= forum.topics.size %></td>
+			<td class="counts smaller"><%= forum.posts.size - forum.topics.size %></td>
+			<td class="last_post smaller">
+				<% if forum.posts.size > 0 %>
+              				<%= forum.posts.last.created_at.strftime("%d/%m/%Y %I:%M")  %><br />
+              				<%= forum.posts.last.user.login %>
+				<% else %>
+					Sin Temas / Posts
+				<% end %>
+			</td>
+		</tr>
+		<% end %>
+	</table>
+    <% else %>
+	<div class="module_body">Actualmente no hay foros en esta categoría.</div>
+    <% end %>
+<br />
+
+
+<h3>Categorías</h3>
+<table>
+	<tr>
+		<td id="HeaderTabla">Nombre</td>
+	</tr>
+	<tr>
+		<td id="ContentTablaMostrar"><%= category.title %></td>
+	        <td id="ContentTablaMostrar"><%= link_to "Nuevo foro", new_forum_path %></td>
+	        <td id="ContentTablaMostrar"><%= link_to "Editar categoría", edit_category_path(category) %></td>
+	        <td id="ContentTablaMostrar"><%= link_to "Eliminar categoría", category_path(category), :confirm => "¿Está seguro que quiere borrar esta categoría?", :method => :delete %></td>
+	</tr>
+</table>
+<% end %>
+
+<div id = "Nuevo">
+<%= link_to "Nueva categoría de foro", new_category_path %>
+</div>

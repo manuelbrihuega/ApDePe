@@ -1,0 +1,29 @@
+// Place all the styles related to the Cart controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#HeaderCarrito {
+  color: #4682B4;
+  font-size: 16px;
+  text-align: left;
+  font-weight: bold;
+  padding-right: 10px;
+} 
+
+#ContenidoCarrito {
+  padding-right: 10px;
+  font-size: 14px;
+  color: black;
+  text-align: right;
+}
+
+#ContenidoCarritoTitulo {
+  padding-right: 10px;
+}
+
+#ContenidoCarritoTitulo a{ 
+  font-size: 14px;
+  color: #555555;
+  text-decoration: none;
+  background-color: transparent;
+}

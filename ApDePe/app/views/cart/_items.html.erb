@@ -1,0 +1,15 @@
+<table>
+  <tr>
+        <th id = "HeaderCarrito">Título</th><th id = "HeaderCarrito">Cantidad</th><th id = "HeaderCarrito">Precio</th>
+  </tr>
+  <% for item in @cart.cart_items %>
+  <tr>
+    <td id = ContenidoCarritoTitulo><%= link_to item.book.title, :action => "show", :controller => "books", :id => item.book.id %></td>
+    <td id = ContenidoCarrito><%= item.amount %></td>
+    <td id = ContenidoCarrito><%= sprintf("%0.2f", item.price) %> €</td>
+    <td><%= link_to '+', { :controller => 'cart', :action => "add", :id => item.book.id, :amount => 1 } %></td>
+    <td><%= link_to '-', { :controller => 'cart' , :action => "remove", :id => item.book.id, :amount => 1 } %></td>
+    <td><%= link_to 'x', { :controller => 'cart', :action => "remove", :id => item.book.id, :amount => item.amount }, :confirm => "¿Está seguro de eliminar el libro?" %></td>
+  </tr>
+  <% end %>
+</table>

@@ -1,0 +1,39 @@
+<% if flash[:cart_notice] %>
+ <p><%= flash[:cart_notice] %></p> 
+<% end %>
+
+<h3>Carrito de la compra</h3>
+
+<div id="HeaderCarrito">
+  <%= render :partial => 'cart/items' %>
+</div>
+
+<div id="carrito_total">
+  <strong>
+    <table>
+      <tr>
+        <td id="carrito_articulos"> Artículos: <%= sprintf("%i", @cart.tamano) %> </td>
+        
+      </tr>
+    </table>
+  </strong>
+</div>
+
+<div id="carrito_pie">
+  <small>
+  <table>
+    <tr>
+    <td id="Nuevo">
+      <% unless @cart.cart_items.empty? %>
+        <%= link_to "Vaciar el carrito", { :controller => 'cart', :action => 'clear' }, :confirm => "¿Está seguro de vaciar el carrito?", :method => 'post' %>
+      <% end %>
+    </td>
+    
+    <td id="realizar_pedido">
+	<%= link_to "Proceder a la facturación", :controller => 'checkout' unless controller.controller_name == 'checkout' %>
+    </td>
+   </tr>
+  </table>
+  </small>
+</div>
+

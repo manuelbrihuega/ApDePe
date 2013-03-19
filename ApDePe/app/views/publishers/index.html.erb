@@ -1,0 +1,22 @@
+<h1>Lista de editores</h1>
+
+<table>
+  <tr>
+    <td id="HeaderEditor">Nombre</td>
+  </tr>
+
+<% @publishers.each do |publisher| %>
+  <tr>
+    <td id="ContentEditor"><%= publisher.name %></td>
+    <td><%= link_to 'Mostrar', publisher %></td>
+    <td><%= link_to 'Editar', edit_publisher_path(publisher) %></td>
+    <td><%= link_to 'Destruir', publisher, confirm: '¿Estas seguro?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<div id= "Nuevo">
+<%= link_to 'Nuevo Editor', new_publisher_path %>
+</div>

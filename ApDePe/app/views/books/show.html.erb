@@ -1,0 +1,63 @@
+<p id="notice"><%= notice %></p>
+
+<table>
+  <tr>
+    <td id="HeaderMostrarLibro">Titulo: </td>
+    <td id = "ContentMostrarLibro"><%= @book.title %></td>
+  </tr>
+  <tr>
+    <td id="HeaderMostrarLibro">Editor: </td>
+    <td id = "ContentMostrarLibro"><%= @book.publisher_id %></td>
+  </tr>
+  <tr>
+    <td id="HeaderMostrarLibro">Publicado en: </td>
+    <td id = "ContentMostrarLibro"><%= @book.published_at.strftime("%d / %m / %Y") %></td>
+  </tr>
+  <tr>
+    <td id="HeaderMostrarLibro">ISBN: </td>
+    <td id = "ContentMostrarLibro">  <%= @book.isbn %></td>
+  </tr>
+  <tr>
+    <td id="HeaderMostrarLibro">Descripción: </td>
+    <td id = "ContentMostrarLibro">  <%= @book.blurb %></td>
+  </tr>
+  <tr>
+    <td id="HeaderMostrarLibro">Páginas: </td>
+    <td id = "ContentMostrarLibro"> <%= @book.page_count %></td>
+  </tr>
+  <tr>
+    <td id="HeaderMostrarLibro">Precio: </td>
+    <td id = "ContentMostrarLibro"> <%= @book.price %> €</td>
+  </tr>
+  <tr>
+    <td id="HeaderMostrarLibro">Autores: </td>
+    <td id = "ContentMostrarLibro">
+       <% @book.authors.each do |author| %><%= author.name %> <%= ", "%><% end %>
+    </td>
+  </tr>
+  <tr>
+    <td id="HeaderMostrarLibro">Etiquetas: </td>
+    <td id = "ContentMostrarLibro">
+  	<% @book.tags.each do |tag| %><%= tag.name %><%= ". "%> <% end %>﻿
+    </td>
+  </tr>
+  <tr>
+    <td id = "imagen"><%= image_tag @book.photo.url(:small) %></td>
+  </tr>
+</table>
+
+<!--
+<p>
+  <b>Created at:</b>
+  <%= @book.created_at %>
+</p>
+
+<p>
+  <b>Updated at:</b>
+  <%= @book.updated_at %>
+</p>
+-->
+
+
+<%= link_to 'Editar', edit_book_path(@book) %>
+<%= link_to 'Volver', books_path %>

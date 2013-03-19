@@ -1,0 +1,23 @@
+<%= form_for [@forum, @topic] do |f| %>
+	<% if @topic.errors.any? %>
+		<% flash.now[:error] = @topic.errors.full_messages.join(', and ') %>
+	<% end %>
+	<div class="fieldset">
+		<div id="HeaderTabla"><%= f.label :Título %><small> (Requerido)</small></div>
+		<%= f.text_field :title, :size => 30 %>
+	</div>
+
+	<% unless @topic.id %>
+	<div class="fieldset">
+		<div id="HeaderTabla"><%= f.label :Cuerpo %><small> (Requerido)</small></div>
+		<%= f.text_area :body, :cols => 60, :rows => 15 %>
+	</div>
+
+	<% end %>
+<br/>
+	<div class="fieldset">
+		<span class="input">
+			<%= f.submit "Enviar" %> o <%= link_to "Cancelar", @topic.nil? ?  @topic : @forum %>
+		</span>
+	</div>
+<% end %>

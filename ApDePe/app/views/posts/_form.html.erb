@@ -1,0 +1,14 @@
+<%= form_for [@topic, @post] do |f| %>
+	<% if @post.errors.any? %>
+		<% flash.now[:error] = @post.errors.full_messages.join(', and ') %>
+	<% end %>
+	
+	<div class="fieldset">
+		<div id="HeaderTabla"><%= f.label :Texto %><small> (Requerido)</small></div>
+		<%= f.text_area :body, :cols => 60, :rows => 15 %>
+	</div>
+<br/>
+	<div class="fieldset">
+		<span class="input"><%= f.submit "Enviar" %> o <%= link_to "Cancelar", @topic %></span>
+	</div>
+<% end %>

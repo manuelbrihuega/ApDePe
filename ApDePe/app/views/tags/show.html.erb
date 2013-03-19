@@ -1,0 +1,18 @@
+<br />
+<table>
+  <tr>
+    <td id = "HeaderTablaMostrar">Nombre: </td>
+    <td id = "ContentTablaMostrar"><%=  @tag.name %></td>
+  </tr>
+  <tr>
+    <td colspan = 2 id = "HeaderTablaMostrar">Libros relacionados: </td>
+  </tr>
+</table>
+    <% @books.each do |book| %>
+	<div id = "Nuevo">
+		<%= link_to book.title, :controller => 'catalog', :action => 'show', :id => book %>
+	</div>
+    <% end %>
+<br />
+<%= link_to 'Editar', edit_tag_path(@tag) %>
+<%= link_to 'Volver', tags_path %>

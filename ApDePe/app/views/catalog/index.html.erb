@@ -1,0 +1,12 @@
+<h1>Catalogo de libros</h1>
+<br/>
+<%= render :partial => "search_box" %>
+<br/>
+<%= render :partial => "books" %>
+<%= will_paginate @books %>
+
+<br/>
+<div id = Nuevo >
+	<%= link_to 'Últimos libros', "catalog/latest" %></td>
+</div>
+

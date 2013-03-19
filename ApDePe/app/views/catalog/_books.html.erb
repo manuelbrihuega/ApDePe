@@ -1,0 +1,15 @@
+
+<dl id="books">
+	<% @books.each do |book| %>
+		<div id=EnlaceTitulo><%= link_to book.title, catalog_path(book) %></div>
+		<div id=Contenido><b>Description :</b> <%= book.blurb %></div>
+		<div id= Contenido><b>Editorial :</b> <%= book.publisher.name %></div>	
+<% if current_user %>
+<p>
+<%= link_to "Añadir al carrito", { :controller => 'cart', :action => 'add',  :id => book.id, :amount => 1} %>
+<% end %>
+</p>
+
+<% end %>
+
+</dl>

@@ -1,0 +1,43 @@
+<h1>Listando pedidos</h1>
+
+  <% @orders.each do |order| %>
+<table>
+<tr><td><br /></td></tr>
+  <tr>
+    <td id = "HeaderTablaMostrar">Id: </td>
+    <td id = "ContentTablaMostrar"><%= order.id %></td>
+  </tr>
+  <tr>
+    <td id = "HeaderTablaMostrar">Estado: </td>
+    <td id = "ContentTablaMostrar"><%= order.status %></td>
+  </tr>
+  <tr>
+    <td id = "HeaderTablaMostrar">Cantidad total: </td>
+    <td id = "ContentTablaMostrar"><%= order.total %></td>
+  </tr>
+  <tr>
+    <td id = "HeaderTablaMostrar">Tamaño:  </td>
+    <td id = "ContentTablaMostrar"> <%= order.order_items.size %></td>
+  </tr>
+  <tr>
+    <td id = "HeaderTablaMostrar">Creado en: </td>
+    <td id = "ContentTablaMostrar"><%= order.created_at.strftime("%d/%m/%Y %I:%M") %></td>
+  </tr>
+  <tr>
+    <td id = "HeaderTablaMostrar">Actualizado en: </td>
+    <td id = "ContentTablaMostrar"><%= order.updated_at.strftime("%d/%m/%Y %I:%M") %></td>
+  </tr>
+  <tr>
+    <td id = "HeaderTablaMostrar">Acciones: </td>
+    <td id = "ContentTablaMostrar"><%= link_to "Ver", :action => 'show', :id => order %></td>
+  </tr>
+</table>
+<% end %>
+
+
+<!--%= 'View page:' if @order_pages.page_count > 1 --%>
+<!--%= pagination_links @order_pages %-->
+
+<div class="paginate">
+  <%= will_paginate @orders %>
+</div>

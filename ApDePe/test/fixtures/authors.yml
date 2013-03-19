@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  first_name: Manuel
+  last_name: Brihuega
+
+two:
+  first_name: Jose
+  last_name: Aparicio

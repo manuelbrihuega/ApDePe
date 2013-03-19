@@ -1,0 +1,80 @@
+// Place all the styles related to the order controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.wrapper-content .listing.order .order {
+  border-bottom: 1px solid #cccccc;
+}
+
+.wrapper-content .listing.order .header p {
+  padding: 5px;
+  margin: 0;
+  display: inline-block;
+  width: 123px;
+  color: #666666;
+  background-color: #e9e9e9;
+}
+
+.wrapper-content .listing.order .order .item,
+.wrapper-content .listing.order .order .actions-list {
+  display: inline-block;
+  width: 123px;
+  padding: 5px;
+  margin: 0;
+}
+
+.wrapper-content .listing.order .order .item {
+  padding: 5px;
+}
+.wrapper-content .listing.order .order .item a {
+  color: #339999;
+}
+.wrapper-content .listing.order .order .item a:hover {
+  background-color: transparent;
+}
+
+.wrapper-content .listing.order .order .actions-list p {
+  display: inline-block;
+  padding: 5px;
+  margin: 0 10px 0 0;
+}
+
+.wrapper-content .listing.order .order .actions-list p a:hover {
+  color: #339999;
+  background-color: transparent;
+}
+
+.wrapper-content .listing.contact.show .order p,
+.wrapper-content .listing.address.show .order p,
+.wrapper-content .listing.items.show .order p {
+  border-bottom: 0px solid #cccccc;
+  padding: 5px;
+  display: inline-block;
+  margin: 0;
+}
+
+.wrapper-content .listing.contact.show .header p,
+.wrapper-content .listing.contact.show .order p {
+  width: 307px;
+}
+.wrapper-content .listing.address.show .header p,
+.wrapper-content .listing.address.show .order p {
+  width: 146px;
+}
+.wrapper-content .listing.items.show .header p,
+.wrapper-content .listing.items.show .order p {
+  width: auto;
+}
+
+.wrapper-content .listing.order.show .order .data {
+  width: 800px;
+}
+.wrapper-content .listing.order.show .order .last {
+  border-bottom: 0;
+}
+
+.wrapper-content .order-form {
+  background-color: #e9e9e9;
+  padding: 20px 30px;
+  margin-bottom: 10px;
+}

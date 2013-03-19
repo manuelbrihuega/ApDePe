@@ -1,0 +1,151 @@
+<h1>Facturación</h1>
+
+<!--%= errors_for 'order' %-->
+<p><em>Su pedido se muestra en la cesta de la compra.</em></p>
+
+<form method="post" id="checkout" action="<%= url_for :action => :place_order %>">
+  <div class="header-form">
+    <a id="header-contact-info" href="#fieldset-contact-info"
+       title="Información de contacto" class="current">
+      <legend>Información de contacto</legend>
+    </a>
+    <a id="header-address-info" href="#fieldset-address-info"
+       title="Dirección de envío">
+      <legend>Dirección de envío</legend>
+    </a>
+    <a id="header-payment-info" href="#fieldset-payment-info"
+       title="Información de facturación">
+      <legend>Información de facturación</legend>
+    </a>
+  </div>
+
+  <fieldset id="fieldset-contact-info" class="current">
+    <div class="field">
+      <div class="label">
+        <p><label for="order_email">Email</label></p>
+      </div>
+      <div class="input">
+        <%= text_field :order, :email %>
+      </div>
+    </div>
+    <div class="field">
+      <div class="label">
+        <p><label for="order_phone_number">Numero de teléfono</label></p>
+      </div>
+      <div class="input">
+        <%= text_field :order, :phone_number %>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset id="fieldset-address-info">
+    <div class="field">
+      <div class="label">
+        <p><label for="order_ship_to_first_name">Nombre</label></p>
+      </div>
+      <div class="input">
+        <%= text_field :order, :ship_to_first_name %>
+      </div>
+    </div>
+    <div class="field">
+      <div class="label">
+        <p><label for="order_ship_to_last_name">Apellidos</label></p>
+      </div>
+      <div class="input">
+        <%= text_field :order, :ship_to_last_name %>
+      </div>
+    </div>
+    <div class="field">
+      <div class="label">
+        <p><label for="order_ship_to_address">Dirección</label></p>
+      </div>
+      <div class="input">
+        <%= text_field :order, :ship_to_address %>
+      </div>
+    </div>
+    <div class="field">
+      <div class="label">
+        <p><label for="order_ship_to_city">Ciudad</label></p>
+      </div>
+      <div class="input">
+        <%= text_field :order, :ship_to_city %>
+      </div>
+    </div>
+    <div class="field">
+      <div class="label">
+        <p><label for="order_ship_to_postal_code">Código postal</label></p>
+      </div>
+      <div class="input">
+        <%= text_field :order, :ship_to_postal_code %>
+      </div>
+    </div>
+    <div class="field">
+      <div class="label">
+        <p><label for="order_ship_to_country">Pais</label></p>
+      </div>
+      <!--select name="order[ship_to_country]" id="order_ship_to_country"-->
+      <!--%= country_select(:order, :ship_to_country, priority_countries = ['United States']) %-->
+      <!--%= options_for_select([ "España", "Estados Unidos", "Alemania", "Francia", "Holanda", "Belgica", "Italia" ], @order.ship_to_country) %-->
+      <!--/select-->
+      <div class="input">
+        <select name="order[ship_to_country]">
+          <option value="FI">Finlandia</option>
+          <option value="NO">Noruega</option>
+          <option value="SE">Suecia</option>
+          <option value="DK">Dinamarca</option>
+          <option value="SP">España</option>
+          <option value="GE">Alemania</option>
+          <option value="FR">Francia</option>
+        </select>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset id="fieldset-payment-info">
+    <div class="field">
+      <div class="label">
+        <p><label for="order_card_type">Tarjeta de crédito</label></p>
+      </div>
+      <div class="input">
+        <select name="order[card_type]" id="order_card_type">
+          <%= options_for_select([ "Visa", "MasterCard", "Discover" ], @order.card_type) %>
+        </select>
+      </div>
+    </div>
+    <div class="field">
+      <div class="label">
+        <p><label for="order_card_expiration_month">Fecha de expiración</label></p>
+      </div>
+      <div class="input">
+        <select name="order[card_expiration_month]">
+          <%= options_for_select(%w(1 2 3 4 5 6 7 8 9 10 11 12), @order.card_expiration_month) %>
+        </select>
+        /
+        <select name="order[card_expiration_year]">
+          <%= options_for_select(%w(2012 2013 2014 2015 2016 2017), @order.card_expiration_year) %>
+        </select>
+      </div>
+    </div>
+    <div class="field">
+      <div class="label">
+        <p><label for="order_card_number">Número de tarjeta</label></p>
+      </div>
+      <div class="input">
+        <%= text_field :order, :card_number %>
+      </div>
+    </div>
+    <div class="field">
+      <div class="label">
+        <p><label for="order_card_verification_value"> <abbr title="Card Verification Value">CVV</abbr>/ <abbr title="Card Validation Check">CVC</abbr>
+        </label></p>
+      </div>
+      <div class="input">
+        <%= text_field :order, :card_verification_value %>
+      </div>
+    </div>
+  </fieldset>
+
+  <p id="submit">
+    <%= submit_tag ("Realizar pedido") %>
+  </p>
+</form>

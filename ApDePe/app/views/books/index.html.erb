@@ -1,0 +1,37 @@
+<h1>Listing books</h1>
+
+<table>
+  <tr>
+    <td width='200' id="HeaderLibro">Titulo</td>
+    <td id="HeaderLibro">Editor</td>
+    <td id="HeaderLibro">Publicado en</td>
+    <td id="HeaderLibro">Isbn</td>
+    <td id="HeaderLibro">Descripción</td>
+    <td id="HeaderLibro">Páginas</td>
+    <td id="HeaderLibro">Precio</td>
+<!--    <td id="HeaderLibro">Creado</td>
+    <td id="HeaderLibro">Actualizado</td>-->
+  </tr>
+
+<% @books.each do |book| %>
+  <tr>
+    <td id="ContentLibro"><%= book.title %></td>
+    <td id="ContentLibro"><%= book.publisher_id %></td>
+    <td id="ContentLibro"><%= book.published_at.strftime("%d / %m / %Y") %></td>
+    <td id="ContentLibro"><%= book.isbn %></td>
+    <td id="ContentLibro"><%= book.blurb %></td>
+    <td id="ContentLibro"><%= book.page_count %></td>
+    <td id="ContentLibro"><%= book.price %> €</td>
+<!--    <td id="ContentLibro"><%= book.created_at %></td>
+    <td id="ContentLibro"><%= book.updated_at %></td>-->
+    <td id="ContentLibro"><%= link_to 'Mostrar', book %></td>
+    <td id="ContentLibro"><%= link_to 'Editar', edit_book_path(book) %></td>
+    <td id="ContentLibro"><%= link_to 'Destruir', book, confirm: 'Estás seguro?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+<div id= "Nuevo">
+<%= link_to 'Nuevo Libro', new_book_path %>
+</div>

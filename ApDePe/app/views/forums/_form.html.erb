@@ -1,0 +1,36 @@
+<em>Para crear una categoría, deje el campo sin seleccionar.</em>
+
+<%= form_for @forum do |f| %>
+	<% if @forum.errors.any? %>
+		<% flash.now[:error] = @forum.errors.full_messages.join(', and ') %>
+	<% end %>
+<br/>      
+	<div class="fieldset">	
+        	<div id="HeaderTabla"><%= f.label :Categoría  %><small> (Requerida)</small></div>
+		<%= f.collection_select :category_id, Category.all, :id, :title %>
+	</div>
+<br/>
+	<div class="fieldset">        
+		<div id="HeaderTabla"><%= f.label :Título %><small> (Requerido)</small></div>
+		<%= f.text_field :title, :size => 75 %>
+	</div>
+<br/>
+	<div class="fieldset">        
+		<div id="HeaderTabla"><%= f.label :Descripción %><small> (Requerida)</small></div>
+		<%= f.text_area :description, :cols => 60, :rows => 5 %>
+	</div>
+<br/>
+	<div class="fieldset">        
+		<div id="HeaderTabla"><%= f.label :Posición %><small> (Requerido)</small></div>
+		<%= f.text_field :position, :size => 75 %>
+	</div>
+
+	<div class="fieldset">
+		<%= f.check_box :state %>
+		<%= f.label :Estádo %>
+	</div>
+<br />
+	<div class="fieldset">
+		<%= f.submit "Enviar" %> or <%= link_to "Cancelar", @forum.nil? ? forum_path(@forum) : forums_path %>
+	</div>
+<% end %>

@@ -1,0 +1,24 @@
+<h1>Lista de autores</h1>
+
+<table>
+  <tr>
+    <td id="HeaderAutor">Nombre</td>
+    <td id="HeaderAutor">Apellidos</td>
+  </tr>
+
+<% @authors.each do |author| %>
+  <tr>
+    <td id="ContentAutor"><%= author.first_name %></td>
+    <td id="ContentAutor"><%= author.last_name %></td>
+    <td><%= link_to 'Mostrar', author %></td>
+    <td><%= link_to 'Editar', edit_author_path(author) %></td>
+    <td><%= link_to 'Destruir', author, :confirm => '¿Estas seguro?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<div id= "Nuevo">
+<%= link_to 'Nuevo Autor', new_author_path %>
+</div>

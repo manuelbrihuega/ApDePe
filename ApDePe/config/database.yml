@@ -1,0 +1,18 @@
+development:
+  adapter: sqlite3
+  host: 127.0.0.1
+  encoding: utf8  	  
+  database: db/development.sqlite3
+
+test:
+  adapter: sqlite3
+  host: 127.0.0.1
+  encoding: utf8  	  
+  database: db/test.sqlite3
+
+production:
+  adapter: sqlite3
+  host: 127.0.0.1
+  encoding: utf8  	  
+  database: db/production.sqlite3
+

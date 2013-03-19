@@ -1,0 +1,11 @@
+<p id="notice"><%= notice %></p>
+
+<table>
+  <tr>
+    <td id="HeaderMostrarEditor">Nombre: </td>
+    <td id = "ContentMostrarEditor"><%= @publisher.name %></td>
+  </tr>
+</table>
+
+<%= link_to 'Editar', edit_publisher_path(@publisher) %>
+<%= link_to 'Volver', publishers_path %>

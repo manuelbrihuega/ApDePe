@@ -1,0 +1,39 @@
+<div class="listing show catalog">
+  <div class="header book">
+    <h3> Consulta de <%= @book.title %> por <% @book.authors.each do |author| %>
+        <%= author.first_name %>
+        <%= author.last_name %>
+          <% end %>
+    </h3>
+          <%= image_tag @book.photo.url(:small)%>
+  </div>
+
+  <div class="book">
+    <p class="label"><b>Autores:</b></p>
+    <p class="data">
+      <% @book.authors.each do |author| %>
+      <%= author.first_name %> <%= author.last_name %>,
+      <% end %>
+    </p>
+    <p class="label"><b>Editorial:</b></p>
+    <p class="data"><%= @book.publisher.name %></p>
+    <p class="label"><b>ISBN:</b></p>
+    <p class="data"><%= @book.isbn %></p>
+    <p class="label"><b>Descripción:</b></p>
+    <p class="data"><%= @book.blurb %></p>
+    <p class="label"><b>Num. Paginas:</b></p>
+    <p class="data"><%= @book.page_count %></p>
+    <p class="label"><b>Precio:</b></p>
+    <p class="data"><%= @book.price %></p>
+    <p class="label last"><b>Etiquetas:</b></p>
+    <p class="data last"><% @book.tags.each do |tag| %><%= tag.name %><%= ". "%> <% end %></p>
+  </div>
+
+	
+</div>
+
+<div class="general-action">
+<%= link_to "Nuevo Foro / Categoría", new_forum_path %>
+</div>
+
+<p><%= link_to 'Volver al catálogo',:action => "index" %></p>

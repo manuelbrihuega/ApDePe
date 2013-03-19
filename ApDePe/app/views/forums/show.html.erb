@@ -1,0 +1,39 @@
+<br />
+<table>
+  <tr>
+    <td id="HeaderTabla">Titulo del foro</td>
+  </tr>
+  <tr>
+   <td id="ContentEtiqueta"><%= @forum.title %></td>
+      <td><%= link_to "Nuevo tema", new_forum_topic_path(@forum) %></td>
+      <td><%= link_to "Editar foro", edit_forum_path(@forum) %></td>
+      <td><%= link_to "Eliminar foro", forum_path(@forum), :confirm => "¿Estás seguro de eliminar este foro?", :method => :delete %></td>
+  </tr>
+</table>
+<br />
+<table>
+  <tr>
+        <td id="HeaderTabla" colspan = 2>Temas</td>
+        <td id="HeaderTabla"> Contestaciones</td>
+        <td id="HeaderTabla"> Vistas</td>
+        <td id="HeaderTabla" class="last_post" align="left">Último post</td>
+  </tr>
+
+  <% @forum.topics.each do |topic| %>
+  <tr>
+	<td class="icon"><%= image_tag("ruby.png") %></td>
+        <td id="ContentTabla">
+        	<%= link_to topic.title, topic_path(topic) %><br />
+          	<small>  por <%= topic.user.login %>
+        </td>
+        <td id ="ContentTabla"><%= topic.posts.size - 1 %></td>
+        <td id ="ContentTabla"><%= topic.hits %></td>
+        <td id ="ContentTabla">
+          <%= topic.posts.last.created_at %><br />
+          por <%= topic.posts.last.user.login %>
+        </td>
+ </tr>
+ <% end %>
+
+</table>
+<%= link_to "Volver", forums_path %>

@@ -1,0 +1,11 @@
+<h1>Catalog#search</h1>
+<p>Find me in app/views/catalog/search.html.erb</p>
+<%= render :partial => "search_box" %>
+<% if @books.size > 0 %>
+	<p>La búsqueda  "<%= params[:q] %>" produjo
+	<%= pluralize @books.size, "resultados" %>:</p>
+	<%= render :partial => "books" %><%= will_paginate @books %>
+<% else %>
+	<p>La búsqueda "<%= params[:q] %>" no produjo ningún resultado</p>
+	<%= render :partial => "books" %><%= will_paginate @books %>
+<% end %>

@@ -1,0 +1,21 @@
+<h1>Usuarios</h1>
+
+<table>
+  <tr>
+    <td id="HeaderTabla">Nombre de usuario</td>
+  </tr>
+
+<% @users.each do |user| %>
+  <tr>
+    <td><%= user.login %></td>
+    <td><%= link_to 'Mostrar', user %></td>
+    <td><%= link_to 'Editar', edit_user_path(user) %></td>
+    <td><%= link_to 'Eliminar', user, confirm: '¿Esta seguro que quiere borrar al usuario del sistema?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+<div id= "Nuevo">
+<%= link_to 'Nuevo usuario', new_user_path %>
+</div>

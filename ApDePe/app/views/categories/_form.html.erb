@@ -1,0 +1,21 @@
+<%= form_for @category do |f| %>
+    <% if @category.errors.any? %>
+        <% flash.now[:error] = @category.errors.full_messages.join(', and ') %>
+    <% end %>
+
+      <div class="field">
+	  <div id="HeaderAutor"><%= f.label :Título %><small>(Requerido)</small></div>
+	  <%= f.text_field :title, :size => 30 %>
+      </div>
+      <div class="field">
+          <div id="HeaderAutor"><%= f.label :Posición %></div>
+	  <%= f.text_field :position, :size => 30 %>
+      </div>
+
+      <div class="fieldset">
+          <%= f.check_box :state %>
+          <%= f.label :Estado %>
+     </div>
+<br />
+     <div class="actions"><%= f.submit "Enviar" %> o <%= link_to "Cancelar", forums_path %></div>
+    <% end %>

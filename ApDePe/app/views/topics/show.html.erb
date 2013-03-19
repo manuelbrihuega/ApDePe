@@ -1,0 +1,47 @@
+<h1>Tema  <%= @topic.title %></h1>
+<table>
+	<tr>
+		<td id = "ContentTablaMostrar"><%= @topic.title %>
+		<td id = "ContentTablaMostrar"><%= link_to "Editar", edit_topic_path(@topic) %>
+		<td id = "ContentTablaMostrar"><%= link_to "Eliminar", @topic, :confirm => "Está seguro de eliminar este tema?", :method => :delete %>
+		<td id = "ContentTablaMostrar"><%= link_to @topic.sticky ? "Unstick" : "Sticky", {:controller => 'topics', :action => 'update', :topic => {:sticky => @topic.sticky ? "false" : "true" }}, :method => :put %>
+
+<%= link_to @topic.locked ? "Desbloquear" : "Bloquear", {:controller => 'topics', :action => 'update', :topic => {:locked => @topic.locked ? "false" : "true" }}, :method => :put %>
+	</tr>
+</table>
+
+<table>
+<% @topic.posts.each do |post| %>
+	<tr>
+		<td id = "HeaderTablaMostrar">Usuario: </td>
+		<td id = "ContentTablaMostrar"><%= post.user.login %></td>
+	</tr>
+	<tr>
+		<td id = "HeaderTablaMostrar">Posts</td>
+		<td id = "ContentTablaMostrar"><%= post.user.posts.size %></td>
+<tr>
+		<td id = "HeaderTablaMostrar">Registrado</td>
+		<td id = "ContentTablaMostrar"><%= post.user.created_at.to_s(:joined) %></td>
+        </tr>
+	<tr>
+		<td id = "HeaderTablaMostrar">Posteado</td>
+		<td id = "ContentTablaMostrar"><%= post.created_at %></td>
+	</tr>
+	<tr>
+		<td id = "HeaderTablaMostrar">Texto</td>
+	</tr>
+	<tr>
+		<td id = "ContentTablaMostrar"><%= post.body %></td>
+	</tr>
+</table>
+<table>
+	<tr>
+            <td id = "ContentTablaMostrar"><%= link_to "Contestar", new_topic_post_path(@topic) %></td>
+            <td id = "ContentTablaMostrar"><%= link_to "Citar", new_topic_post_path(@topic, :quote => post) %></td>
+            <td id = "ContentTablaMostrar"><%= link_to "Editar", edit_post_path(post) %></td>
+            <td id = "ContentTablaMostrar"><%= link_to "Eliminar", post, :confirm => "Are you sure?", :method => :delete %>  </td>
+	</tr>
+<% end %>
+</table>
+
+<div id="Nuevo"><%= link_to "Volver al foro", forum_path(@topic.forum) %></div>
